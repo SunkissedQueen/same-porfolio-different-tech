@@ -85,17 +85,17 @@ React Routers
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/about" className="nav-link">
+          <NavLink to="/aboutme" className="nav-link">
             About Me
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/about" className="nav-link">
+          <NavLink to="/projects" className="nav-link">
             Projects
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/about" className="nav-link">
+          <NavLink to="/contact" className="nav-link">
             Contact
           </NavLink>
         </NavItem>
