@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+## Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+$ yarn create react-app <app-name>
+$ cd <app-name>
 
-## Available Scripts
+## branch: react-setup
+Styling 
+- $ yarn add bootstrap
+- $ yarn add reactstrap
+- Add to src/index.js: import 'bootstrap/dist/css/bootstrap.min.css'
 
-In the project directory, you can run:
+Src Directories 
+- Create three directories in your React application's src directory: assets, components, and pages.
+- Components: Header, Footer
+- Pages: Home, AboutMe, Projects, Contact, NotFound
+- boilerplate functional component
+```javascript
+  import React from "react"
 
-### `yarn start`
+  const Home = () => {
+    return (
+      <>
+        <h3>This is the Home Page</h3>
+      </>
+    )
+  }
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  export default Home
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+React Routers 
+- $ yarn add react-router-dom
+- import router components
+```javascript
+  // src/index.js
+  import { BrowserRouter } from "react-router-dom" 
 
-### `yarn test`
+  const root = ReactDOM.createRoot(document.getElementById("root"))
+  root.render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
+  )
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  // src/App.js
+  import { Routes, Route } from "react-router-dom"
+  import Header from "./components/Header"
+  import Footer from "./components/Footer"
+  import AboutMe from "./pages/AboutMe"
+  import Projects from "./pages/Projects"
+  import Contact from "./pages/Contact"
+  import Home from "./pages/Home"
+  import NotFound from "./pages/NotFound"
 
-### `yarn build`
+  return (
+  <>
+    <Header />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/aboutme" element={<AboutMe />} />
+      <Route path="/projects" element={<Projects />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+    <Footer />
+  </>
+)
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## branch: header
+- navigation will be place on the header bar
+```javascript
+  import React from "react"
+  import { Nav, NavItem } from "reactstrap"
+  import { NavLink } from "react-router-dom"
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  const Header = () => {
+    return (
+      <Nav>
+        <NavItem>
+          <NavLink to="/" className="nav-link">
+            Home
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/about" className="nav-link">
+            About Me
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/about" className="nav-link">
+            Projects
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/about" className="nav-link">
+            Contact
+          </NavLink>
+        </NavItem>
+      </Nav>
+    )
+  }
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  export default Header
+```
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
