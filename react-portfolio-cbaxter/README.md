@@ -106,5 +106,10 @@ React Routers
   export default Header
 ```
 
-
-
+## branch: footer
+- copyright for branding of this year
+  - `&copy;` 
+- Link for resources
+  - react components
+  - react router
+  - syllabus
