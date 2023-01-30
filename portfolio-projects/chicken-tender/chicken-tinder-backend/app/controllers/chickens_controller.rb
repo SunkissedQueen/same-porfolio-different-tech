@@ -24,6 +24,9 @@ class ChickensController < ApplicationController
   end
 
   def destroy
+    chicken = Chicken.find(params[:id])
+    chicken.destroy
+    render json: chicken
   end
 
   private

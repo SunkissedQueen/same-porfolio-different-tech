@@ -178,13 +178,6 @@
 end
 ```
 
-
-
-  def destroy
-    cat = Cat.find(params[:id])
-    cat.destroy
-    render json: cat
-  end
   - to understand more about response: https://www.rubypigeon.com/posts/examining-internals-of-rails-request-response-cycle/
 
 ### Validations

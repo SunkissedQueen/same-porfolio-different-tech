@@ -86,4 +86,28 @@ RSpec.describe "Chickens", type: :request do
     end
   end
 
+  describe "DELETE /destroy" do
+    it "deletes a chicken" do
+      Chicken.create(
+        name: 'Cluck Norris',
+        age: 11,
+        hobbies: 'Defending the whole farm',
+        image: 'cluck.avif'
+      )
+
+      # Make a request
+      get '/chickens'
+
+      chickens = JSON.parse(response.body)
+      expect(chickens.length).to eq(1)
+
+      chicken = Chicken.first
+      delete "/chickens/#{chicken.id}"
+      expect(response).to have_http_status(200)
+      
+      coop = Chicken.all
+      expect(coop).to be_empty
+    end
+  end
+
 end
