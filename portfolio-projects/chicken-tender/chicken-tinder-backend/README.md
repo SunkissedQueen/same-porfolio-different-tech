@@ -1,6 +1,6 @@
 ## README
 
-### Setup
+### Setup branch:setup
 - created rails app to control API for decoupled project
   - $ rails new chicken-tinder-backend -d postgresql -T
   - $ cd chicken-tinder-backend
@@ -18,7 +18,12 @@
   - $ rails generate resource Chicken name:string age:integer hobbies:text image:text
   - $ rails db:migrate
 
-### Seeds
+### Checkout rails app
+- To see that rails app built correctly: $ rails s
+- To see all applicable routes: $ rails routes -E
+- To interact with database: $ rails c
+
+### Seeds branch:seeds
 - Store mock data in db/seeds.rb to populate our database with one command rather than manually importing data through the Rails console.
 ```ruby
   chickens = [
@@ -57,6 +62,12 @@
 - To add seeds to the database, ensure database has been created, given resource or model, and migrated: 
   - $ rails db:seed
 
+- To view chickens in rails console
+  > Chicken.all
+  > Chicken.count
+
+
+### CORS branch:cors
 - Enable our Rails application to accept requests from the React application
 ```ruby
   # Skip Authenticity Token in app/controllers/application_controller.rb
