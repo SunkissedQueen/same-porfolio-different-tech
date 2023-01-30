@@ -47,6 +47,26 @@ RSpec.describe "Chickens", type: :request do
       expect(chicken.keys).to include("name", "age", "hobbies", "image")
       expect(chicken.values).to include('Cluck Norris', 12, 'Defending the chicken coop', 'cluck.avif')
     end
+
+    it "cannot create a chicken without a name" do
+      chicken_params = {  
+        chicken: {
+          age: 12,
+          hobbies: 'Defending the chicken coop',
+          image: 'cluck.avif'
+        }
+      }
+
+      # Make a request
+      post '/chickens', params: chicken_params
+      # status code
+      expect(response).to have_http_status(422)
+      # payload
+      chicken = JSON.parse(response.body)
+      # p chicken
+      expect(chicken['name']).to include("can't be blank")
+    end
+
   end
 
   describe "PATCH /update" do
