@@ -184,9 +184,58 @@ end
 - Create a test in `spec/models/chicken_spec.rb` that will look for an error if a chicken is created without valid attributes
 - Run the test: $ rspec spec/models/chicken_spec.rb
 - Verify good failure
+```bash
+  Chicken
+    should validate name (FAILED - 1)
+
+  Failures:
+
+    1) Chicken should validate name
+      Failure/Error: expect(chicken.errors[:name]).to_not be_empty
+        expected `[].empty?` to be falsey, got true
+      # ./spec/models/chicken_spec.rb:6:in `block (2 levels) in <top (required)>'
+
+  Finished in 0.02664 seconds (files took 0.79888 seconds to load)
+  1 example, 1 failure
+
+  Failed examples:
+
+  rspec ./spec/models/chicken_spec.rb:4 # Chicken should validate name
+```
 - Write the logic to make the test pass in app/models/chicken.rb
 - Run the test: $ rspec spec/models/chicken_spec.rb
 - Verify valid pass
+```bash
+  Chicken
+    should validate name
 
+  Finished in 0.02444 seconds (files took 0.83741 seconds to load)
+  1 example, 0 failures
+```
 
+- Write request validations to ensure the API is sending correct response status when we submit a create request without chicken attributes
+- Run the test:
+- See good failure if a status is not on endpoint
+```bash
+  Failures:
 
+    1) Chickens POST /create cannot create a chicken without a name
+      Failure/Error: expect(response).to have_http_status(422)
+        expected the response to have status code 422 but it was 200
+```
+- Passing
+```bash
+  Chickens
+    GET /index
+      gets a list of chickens
+    POST /create
+      creates a chicken
+      cannot create a chicken without a name
+    PATCH /update
+      modifies a chicken
+    DELETE /destroy
+      deletes a chicken
+
+  Finished in 0.06942 seconds (files took 0.85081 seconds to load)
+  5 examples, 0 failures
+```
