@@ -5,6 +5,8 @@ class ChickensController < ApplicationController
   end
 
   def create
+    chicken = Chicken.create(chicken_params)
+    render json: chicken
   end
 
   def update
@@ -14,4 +16,8 @@ class ChickensController < ApplicationController
   def destroy
   end
 
+  private
+  def chicken_params
+    params.require(:chicken).permit(:name, :age, :hobbies, :image)
+  end
 end
