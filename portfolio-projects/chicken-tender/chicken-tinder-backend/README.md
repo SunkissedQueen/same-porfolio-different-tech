@@ -1,24 +1,10 @@
-# README
+## README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Setup
+- created rails app to control API for decoupled project
+- deleted git file so I could track on my portfolio github repo
+  - $ ls -a
+  - $ rm -rf .git
+- remove files on git ignore
+  - Add .DS_Store to .gitignore
+  - $ git rm -r --cached .
