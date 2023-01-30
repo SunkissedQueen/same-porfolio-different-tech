@@ -67,6 +67,62 @@ RSpec.describe "Chickens", type: :request do
       expect(chicken['name']).to include("can't be blank")
     end
 
+    it "cannot create a chicken without an age" do
+      chicken_params = {  
+        chicken: {
+          name: 'Cluck Norris',
+          hobbies: 'Defending the chicken coop',
+          image: 'cluck.avif'
+        }
+      }
+
+      # Make a request
+      post '/chickens', params: chicken_params
+      # status code
+      expect(response).to have_http_status(422)
+      # payload
+      chicken = JSON.parse(response.body)
+      # p chicken
+      expect(chicken['age']).to include("can't be blank")
+    end
+
+    it "cannot create a chicken without hobbies" do
+      chicken_params = {  
+        chicken: {
+          name: 'Cluck Norris',
+          age: 12,
+          image: 'cluck.avif'
+        }
+      }
+
+      # Make a request
+      post '/chickens', params: chicken_params
+      # status code
+      expect(response).to have_http_status(422)
+      # payload
+      chicken = JSON.parse(response.body)
+      # p chicken
+      expect(chicken['hobbies']).to include("can't be blank")
+    end
+
+    it "cannot create a chicken without an image" do
+      chicken_params = {  
+        chicken: {
+          name: 'Cluck Norris',
+          age: 12
+          hobbies: 'Defending the chicken coop',
+        }
+      }
+
+      # Make a request
+      post '/chickens', params: chicken_params
+      # status code
+      expect(response).to have_http_status(422)
+      # payload
+      chicken = JSON.parse(response.body)
+      # p chicken
+      expect(chicken['image']).to include("can't be blank")
+    end
   end
 
   describe "PATCH /update" do

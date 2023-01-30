@@ -213,7 +213,7 @@ end
   1 example, 0 failures
 ```
 
-- Write a test in request folder to ensure correct response status when we submit a create request without chicken attributes
+- Write request validations to ensure the API is sending correct response status when we submit a create request without chicken attributes
 - Run the test:
 - See good failure if a status is not on endpoint
 ```bash
