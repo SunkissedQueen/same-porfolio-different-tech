@@ -1,0 +1,47 @@
+#mydiv, #mydiv2, #mydiv3, #mydiv4, #mydiv5, #mydiv6, #mydiv7, #mydiv8, #mydiv9, #mydiv10, #mydiv11, #mydiv12, #mydiv13, #mydiv14, #mydiv15, #mydiv16, #mydiv17, #mydiv18, #mydiv19 {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+}
+
+#mydivheader, #mydivheader2, #mydivheader3, #mydivheader4, #mydivheader5 {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #000;
+  font-size: 20px;
+}
+
+#mydivheader6, #mydivheader7, #mydivheader8, #mydivheader9, #mydivheader10, #mydivheader11, #mydivheader12, #mydivheader13, #mydivheader14, #mydivheader15, #mydivheader16, #mydivheader17, #mydivheader18, #mydivheader19 {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #c221f3;
+  color: #000;
+  font-size: 20px;
+}
+
+.vertical, .vertical2, .vertical3, .vertical4 {
+  border-left: 3px solid black;
+  height: 700px;
+  position:absolute;
+}
+
+.vertical {
+  left: 11%;
+}
+
+.vertical2 {
+  left: 26%;
+}
+
+.vertical3 {
+  left: 76%;
+}
+
+.vertical4 {
+  left: 84%;
+}
