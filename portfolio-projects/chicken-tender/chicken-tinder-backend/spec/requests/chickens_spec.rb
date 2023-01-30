@@ -49,5 +49,41 @@ RSpec.describe "Chickens", type: :request do
     end
   end
 
+  describe "PATCH /update" do
+    it "modifies a chicken" do
+      chicken_params = {  
+        chicken: {
+          name: 'Cluck Norris',
+          age: 12,
+          hobbies: 'Defending the chicken coop',
+          image: 'cluck.avif'
+        }
+      }
+
+      # Make a request
+      post '/chickens', params: chicken_params
+      chicken = Chicken.first
+
+      updated_params = {  
+        chicken: {
+          name: 'Cluck Norris',
+          age: 11,
+          hobbies: 'Defending the whole farm',
+          image: 'cluck.avif'
+        }
+      }
+
+      patch "/chickens/#{chicken.id}", params:updated_params
+      chick = Chicken.first
+
+      # status code
+      expect(response).to have_http_status(200)
+
+      # payload
+      chick = Chicken.first
+      expect(chick.age).to eq(11)
+      expect(chick.hobbies).to eq('Defending the whole farm')
+    end
+  end
 
 end
