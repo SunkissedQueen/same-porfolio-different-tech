@@ -102,10 +102,10 @@
   # Update the dependencies: $ bundle
 ```
 
-### Endpoints
-- Stub endpoints for the crud actions in app/controllers/cats_controller.rb
+### Endpoints branch:endpoints
+- Stub endpoints for the crud actions in app/controllers/chickens_controller.rb
 ```ruby
-  class CatsController < ApplicationController
+  class ChickensController < ApplicationController
 
     def index
     end
@@ -121,12 +121,79 @@
 
   end
 ```
-- Create a test for each endpoint in `spec/requests/chickens_request_spec.rb`
-- Run the test: $ rspec spec/requests/chickens_request_spec.rb
+- Create a test for each endpoint in `spec/requests/chickens_spec.rb`
+- Run the test: $ rspec spec/requests/chickens_spec.rb
 - Verify good failure
+```bash
+  Chickens
+    GET /index
+      gets a list of chickens (FAILED - 1)
+
+  Failures:
+
+    1) Chickens GET /index gets a list of chickens
+      Failure/Error: get '/chickens'
+      
+      ActionController::MissingExactTemplate:
+        ChickensController#index is missing a template for request formats: text/html
+  Finished in 0.07107 seconds (files took 2.18 seconds to load)
+  1 example, 1 failure
+
+  Failed examples:
+
+  rspec ./spec/requests/chickens_spec.rb:5 # Chickens GET /index gets a list of chickens
+```
 - Write the logic to make the test pass
-- Run the test: $ rspec spec/requests/chickens_request_spec.rb
+```ruby
+  def index
+    chickens = Chicken.all
+    render json: chickens
+  end
+```
+- Run the test: $ rspec spec/requests/chickens_spec.rb
 - Verify valid pass
+```bash
+  Chickens
+    GET /index
+      gets a list of chickens
+
+  Finished in 0.05266 seconds (files took 0.90778 seconds to load)
+  1 example, 0 failures
+```
+
+- NOTES
+```ruby
+  # create endpoint testing
+  chicken = JSON.parse(response.body)
+  p chicken
+  expect(chicken.length).to eq 1
+  # Failure because output is a hash and therefore will count the amount of key:value pairs
+  # Pass on index because output is an array with one value
+
+  # However, can use body response to match the expected values for the new chicken
+  chicken = JSON.parse(response.body)
+  # p chicken
+  expect(chicken.keys).to include("name", "age", "hobbies", "image")
+  expect(chicken.values).to include('Cluck Norris', 12, 'Defending the chicken coop', 'cluck.avif')
+end
+```
+
+  def update
+    cat = Cat.find(params[:id])
+    cat.update(cat_params)
+    if cat.valid?
+      render json: cat
+    else
+      render json: cat.errors, status: 422
+    end
+  end
+
+  def destroy
+    cat = Cat.find(params[:id])
+    cat.destroy
+    render json: cat
+  end
+  - to understand more about response: https://www.rubypigeon.com/posts/examining-internals-of-rails-request-response-cycle/
 
 ### Validations
 - Create a test in `spec/models/chicken_spec.rb` that will look for an error if a chicken is created without valid attributes
