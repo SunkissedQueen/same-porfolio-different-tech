@@ -126,18 +126,19 @@ RSpec.describe "Chickens", type: :request do
   end
 
   describe "PATCH /update" do
-    it "modifies a chicken" do
-      chicken_params = {  
-        chicken: {
-          name: 'Cluck Norris',
-          age: 12,
-          hobbies: 'Defending the chicken coop',
-          image: 'cluck.avif'
-        }
-      }
 
-      # Make a request
-      post '/chickens', params: chicken_params
+    before do
+      post '/chickens', params: { 
+        chicken: {
+        name: 'Cluck Norris',
+        age: 12,
+        hobbies: 'Defending the chicken coop',
+        image: 'cluck.avif'
+        } 
+      }
+    end
+
+    it "modifies a chicken" do
       chicken = Chicken.first
 
       updated_params = {  
@@ -150,7 +151,6 @@ RSpec.describe "Chickens", type: :request do
       }
 
       patch "/chickens/#{chicken.id}", params:updated_params
-      chick = Chicken.first
 
       # status code
       expect(response).to have_http_status(200)
@@ -163,17 +163,6 @@ RSpec.describe "Chickens", type: :request do
 
 
     it "cannot modify a chicken without a name" do
-      chicken_params = {  
-        chicken: {
-          name: 'Cluck Norris',
-          age: 12,
-          hobbies: 'Defending the chicken coop',
-          image: 'cluck.avif'
-        }
-      }
-
-      # Make a request
-      post '/chickens', params: chicken_params
       chicken = Chicken.first
 
       updated_params = {  
@@ -193,17 +182,6 @@ RSpec.describe "Chickens", type: :request do
     end
 
     it "cannot modify a chicken without an age" do
-      chicken_params = {  
-        chicken: {
-          name: 'Cluck Norris',
-          age: 12,
-          hobbies: 'Defending the chicken coop',
-          image: 'cluck.avif'
-        }
-      }
-
-      # Make a request
-      post '/chickens', params: chicken_params
       chicken = Chicken.first
 
       updated_params = {  
@@ -223,17 +201,6 @@ RSpec.describe "Chickens", type: :request do
     end
 
     it "cannot modify a chicken without hobbies" do
-      chicken_params = {  
-        chicken: {
-          name: 'Cluck Norris',
-          age: 12,
-          hobbies: 'Defending the chicken coop',
-          image: 'cluck.avif'
-        }
-      }
-
-      # Make a request
-      post '/chickens', params: chicken_params
       chicken = Chicken.first
 
       updated_params = {  
@@ -253,17 +220,7 @@ RSpec.describe "Chickens", type: :request do
     end
 
     it "cannot modify a chicken without an image" do
-      chicken_params = {  
-        chicken: {
-          name: 'Cluck Norris',
-          age: 12,
-          hobbies: 'Defending the chicken coop',
-          image: 'cluck.avif'
-        }
-      }
 
-      # Make a request
-      post '/chickens', params: chicken_params
       chicken = Chicken.first
 
       updated_params = {  
