@@ -24,9 +24,11 @@ class ChickensController < ApplicationController
   end
 
   def destroy
+    chickens = Chicken.all
     chicken = Chicken.find(params[:id])
     chicken.destroy
-    render json: chicken
+    # render json:chickens, status: 204
+    render json: { message: 'Chicken has left the coop.' }
   end
 
   private
