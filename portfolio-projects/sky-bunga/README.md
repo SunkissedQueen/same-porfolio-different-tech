@@ -66,8 +66,18 @@
 - $ yarn add react-router-dom
 
 ```javascript
-// app/javascript/components/App.js
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+  // app/javascript/components/App.js
+  import React from "react"
+  import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+  const App = () => {
+    return (
+      <>
+        <h1>Sky Bungalow App</h1>
+      </>
+    )
+  }
+  export default App
 ```
 
 ## Adding Reactstrap
