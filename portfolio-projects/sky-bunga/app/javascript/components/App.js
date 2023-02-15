@@ -10,21 +10,10 @@ import NotFound from "./pages/NotFound"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 
-const App = ({
-  logged_in,
-  current_user,
-  new_user_route,
-  sign_in_route,
-  sign_out_route
-}) => {
-  console.log("logged_in:", logged_in)
-  console.log("current_user:", current_user)
-  console.log("new_user_route:", new_user_route)
-  console.log("sign_in_route:", sign_in_route)
-  console.log("sign_out_route:", sign_out_route)
+const App = (props) => {
   return (
     <BrowserRouter>
-      <Header />
+      <Header {...props}/>
       <h1>Sky Bungalow App</h1>
       <Routes>
         <Route path="/" element={<Home />} />

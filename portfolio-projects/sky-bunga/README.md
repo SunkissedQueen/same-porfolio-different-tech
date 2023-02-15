@@ -136,4 +136,23 @@ The Devise User model is going to have an association with the Sky Bungalow mode
   }
 
   export default App
+
+  // Header
+  import React from "react"
+  import { Nav, NavItem } from "reactstrap"
+  import { NavLink } from "react-router-dom"
+
+  const Navigation = () => {
+    return (
+      <Nav>
+        <NavItem>
+          <NavLink to="/" className="nav-link">
+            Home
+          </NavLink>
+        </NavItem>
+      </Nav>
+    )
+  }
+
+  export default Navigation
 ```
