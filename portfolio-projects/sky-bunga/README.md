@@ -88,10 +88,11 @@
 /* app/assets/stylesheets/application.scss */
 @import "bootstrap";
 ```
+
 ## Sky Bungalow Resource
 The Devise User model is going to have an association with the Sky Bungalow model. In this situation, the user will have many sky bungalows and the sky bungalows will belong to a user.
 
-- $ rails g resource SkyBungalow street:string city:string state:string sky_captain:string email:string price:string bedrooms:integer bathrooms:integer pets:string image:text user_id:integer
+- $ rails g resource SkyBungalow street:string city:string state:string price:string beds:integer baths:integer image:text sky_captain:string email:string phone:string user_id:integer
 - $ rails db:migrate
 ```ruby
   # app/models/skybungalow.rb

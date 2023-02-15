@@ -1,0 +1,2 @@
+class SkyBungalowsController < ApplicationController
+end
