@@ -156,3 +156,31 @@ The Devise User model is going to have an association with the Sky Bungalow mode
 
   export default Navigation
 ```
+
+## React Testing Library
+- $ yarn add --dev @testing-library/react
+- $ yarn add --dev jest
+- $ yarn add --dev @testing-library/dom
+- $ yarn add --dev jsdom global-jsdom
+- $ yarn add --dev @testing-library/jest-dom
+- $ yarn add -D jest-environment-jsdom
+
+```json
+  "scripts": {
+      "test": "jest",
+      "test-watch": "jest --watch"
+    },
+    "jest": {
+      "testEnvironment": "jsdom",
+      "roots": [
+        "app/javascript/components"
+      ],
+      "moduleNameMapper": {
+        "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/javascript/__mocks__/fileMock.js",
+        "\\.(css|less)$": "<rootDir>/test/javascript/__mocks__/styleMock.js"
+      },
+      "setupFilesAfterEnv": [
+        "@testing-library/jest-dom/extend-expect"
+      ]
+    }
+```
