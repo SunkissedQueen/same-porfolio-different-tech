@@ -207,3 +207,7 @@ The Devise User model is going to have an association with the Sky Bungalow mode
     'react/prop-types': ['off']
   }
 ```
+
+## standard rb
+- $ gem install standardrb -v 1.0.0
+- $ bundle install
