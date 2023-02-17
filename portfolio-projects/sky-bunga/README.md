@@ -184,3 +184,30 @@ The Devise User model is going to have an association with the Sky Bungalow mode
       ]
     }
 ```
+## ESlint
+- added the following files: .eslintignore, .eslintrc.js, .eslintrc.yml
+- added dev dependencies:
+```bash
+  - $ yarn add eslint --dev
+  - $ yarn add eslint-config-standard --dev
+  - $ yarn add eslint-plugin-import --dev
+  - $ yarn add eslint-plugin-n eslint-plugin-promise eslint-plugin-react --dev
+  - $ yarn run eslint --init
+  - $ yarn run eslint .
+```
+- modify .eslintrc.js
+```javascript
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "jest": true
+  },
+  "rules": { 
+    'react/prop-types': ['off']
+  }
+```
+
+## standard rb
+- $ gem install standardrb -v 1.0.0
+- $ bundle install
