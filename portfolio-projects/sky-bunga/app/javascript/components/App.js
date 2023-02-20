@@ -13,10 +13,10 @@ import Header from "./components/Header"
 const App = (props) => {
   return (
     <BrowserRouter>
-      <Header {...props}/>
+      {/* <Header {...props}/> */}
       <h1>Sky Bungalow App</h1>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home {...props}/>} />
         <Route path="/about" element={<AboutMe />} />
         <Route path="/edit" element={<BungaEdit />} />
         <Route path="/index" element={<BungaIndex />} />
