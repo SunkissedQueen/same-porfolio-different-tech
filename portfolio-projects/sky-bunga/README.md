@@ -211,3 +211,6 @@ The Devise User model is going to have an association with the Sky Bungalow mode
 ## standard rb
 - $ gem install standardrb -v 1.0.0
 - $ bundle install
+
+## Formatting
+- `&copy;` for &copy;
